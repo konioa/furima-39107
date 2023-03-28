@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, format: {with: VALID_PASSWORD_REGEX, message: "is invalid. Include both letters and numbers" }
+  validates :password, format: {with: VALID_PASSWORD_REGEX, message: "is invalid. Include both letters and numbers." }
 
   with_options presence: true do
     # ひらがな、カタカナ、漢字のみ許可する
