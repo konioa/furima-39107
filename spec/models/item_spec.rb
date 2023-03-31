@@ -29,27 +29,27 @@ RSpec.describe User, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'categoryが空だと保存できない' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'conditionが空だと保存できない' do
-        @item.condition_id = ''
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'delivery_costが空だと保存できない' do
-        @item.delivery_cost_id = ''
+        @item.delivery_cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery cost can't be blank")
       end
       it 'prefectureが空だと保存できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'shipping_dateが空だと保存できない' do
-        @item.shipping_date_id = ''
+        @item.shipping_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
