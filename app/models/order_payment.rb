@@ -1,7 +1,7 @@
 class OrderPayment
 
   include ActiveModel::Model
-  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone, :item_id, :user_id
+  attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone, :item_id, :user_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class OrderPayment
     validates :city
     validates :block
     validates :phone, format: {with: /\A[0-9]{11}\z/ }
+    validates :token
   end
 
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
