@@ -49,11 +49,24 @@ RSpec.describe OrderPayment, type: :model do
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include("Phone can't be blank")
       end
-      it 'phoneが10桁以上11桁以下でないと保存できない' do
+      it 'phoneが9桁以下は保存できない' do
+        @order_payment.phone = '080000000'
+        @order_payment.valid?
+        expect(@order_payment.errors.full_messages).to include('Phone is invalid')
+      end
+
+      it 'phoneが12桁以下は保存できない' do
         @order_payment.phone = '080000000000'
         @order_payment.valid?
         expect(@order_payment.errors.full_messages).to include('Phone is invalid')
       end
+
+      it 'phoneが半角数字以外は保存できない' do
+        @order_payment.phone = '００００００００００'
+        @order_payment.valid?
+        expect(@order_payment.errors.full_messages).to include('Phone is invalid')
+      end
+
       it 'userが紐付いていないと保存できないこと' do
         @order_payment.user_id = nil
         @order_payment.valid?
