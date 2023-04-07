@@ -6,14 +6,14 @@ class OrderPayment
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "はハイフン(-)を含めてください"}
     validates :city
     validates :block
     validates :phone, format: {with: /\A\d{10,11}\z/}
     validates :token
   end
 
-  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id, numericality: { other_than: 1 , message: "を入力してください"}
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
